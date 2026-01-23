@@ -1,12 +1,12 @@
 ﻿# Birthday Bot PRD (TZ)
 
 ## Overview
-A local-first birthday agent that reads structured birthday events from Google Calendar, generates personalized greetings with an LLM, and saves the result as a Gmail draft labeled `birthday` for manual review and forwarding on the actual birthday. Greetings are generated the day before the birthday. A Drive-hosted `greetings_history.json` is used to prevent repetition over the last three years.
+A local-first birthday agent that reads structured birthday events from Google Calendar, generates personalized greetings with an LLM, and saves the result as a Gmail inbox message (UNREAD) labeled `birthday` for manual review and forwarding on the actual birthday. Greetings are generated the day before the birthday. A Drive-hosted `greetings_history.json` is used to prevent repetition over the last three years.
 
 ## Goals
 - Automatically find upcoming birthdays from a designated Google Calendar.
 - Generate a localized, relationship-aware greeting using structured metadata in the event description.
-- Create a Gmail draft the day before the birthday and label it `birthday`.
+- Insert a Gmail inbox message (UNREAD) the day before the birthday and label it `birthday`.
 - Store and compare greetings in `greetings_history.json` on Google Drive to avoid repeats (3-year window).
 - Run locally with minimal dependencies and support Ollama by default, OpenAI optional.
 
@@ -35,10 +35,11 @@ Calendar event description must contain:
   - Prior greetings (last 3 years) for the same person
   - Instruction to avoid repetition
 - Generate greeting with LLM (Ollama default, OpenAI optional).
-- Create Gmail draft:
+- Insert Gmail message into INBOX:
   - Subject: dynamic (e.g., "It is your birthday today, Maxim!")
   - Body: greeting only
   - Label: `birthday`
+  - From and to are the user (self-addressed)
 - Update `greetings_history.json` in Drive and local cache.
 
 ## Non-Functional Requirements
@@ -58,7 +59,7 @@ Calendar event description must contain:
 
 ## Integrations
 - Google Calendar API: read events.
-- Gmail API: create draft + label.
+- Gmail API: insert message into INBOX + label.
 - Google Drive API: read/write history file.
 - LLM: Ollama local HTTP API; OpenAI if configured.
 
@@ -73,6 +74,6 @@ Calendar event description must contain:
 - History file drift if Drive sync fails.
 
 ## Acceptance Criteria
-- When a calendar event has valid metadata and the birthday is tomorrow, a draft labeled `birthday` appears in Gmail with a personalized greeting.
+- When a calendar event has valid metadata and the birthday is tomorrow, an unread inbox message labeled `birthday` appears in Gmail with a personalized greeting.
 - Greeting differs from the last 3 years for the same person.
 - `greetings_history.json` is updated on Drive and cached locally.

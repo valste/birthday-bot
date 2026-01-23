@@ -20,7 +20,7 @@ This repo contains a local-first birthday greeting agent. Keep the solution simp
 
 ## Behavior Requirements
 - Generate greetings the day before the birthday.
-- Only create Gmail drafts; do not auto-send.
+- Insert Gmail inbox messages (UNREAD) from you to you; do not auto-send.
 - Use `greetings_history.json` on Drive to avoid repeating the last 3 years.
 - Keep prompts concise and include prior greetings to avoid duplication.
 

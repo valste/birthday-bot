@@ -13,7 +13,7 @@ def parse_event_metadata(description: str) -> dict[str, str]:
 
 
 def fetch_upcoming_birthdays(service: Any, calendar_id: str, *, now: datetime | None = None) -> list[dict[str, Any]]:
-    now = now or datetime.utcnow()
+    now = now or datetime.now(datetime.timezone.utc)
     window_start = now
     window_end = now + timedelta(days=2)
     # Placeholder: replace with google calendar API call

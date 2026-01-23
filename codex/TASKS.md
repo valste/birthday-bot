@@ -10,8 +10,8 @@
 - [ ] Build prompt with metadata and prior greetings.
 - [ ] Enforce difference from previous 3 years.
 
-## Milestone 3: Gmail Drafts
-- [ ] Create draft email with subject and body.
+## Milestone 3: Gmail Inbox Messages
+- [ ] Insert inbox message (UNREAD) from you to you with subject and body.
 - [ ] Ensure label `birthday` exists and apply it.
 
 ## Milestone 4: History Sync

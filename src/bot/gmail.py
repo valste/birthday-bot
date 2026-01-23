@@ -7,6 +7,13 @@ def ensure_label(service: Any, label_name: str) -> str:
     return label_name
 
 
-def create_draft(service: Any, to_email: str, subject: str, body: str, label_id: str) -> None:
-    # Placeholder: create a draft email with label
-    _ = (service, to_email, subject, body, label_id)
+def insert_inbox_message(
+    service: Any,
+    from_email: str,
+    to_email: str,
+    subject: str,
+    body: str,
+    label_id: str,
+) -> None:
+    # Placeholder: insert a message into INBOX, mark UNREAD, apply label.
+    _ = (service, from_email, to_email, subject, body, label_id)

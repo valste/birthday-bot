@@ -1,12 +1,12 @@
 ﻿# Birthday Bot
 
-Local-first birthday greeting generator using Google Calendar, Gmail drafts, and Drive history with Ollama default and OpenAI optional.
+Local-first birthday greeting generator using Google Calendar, Gmail inbox messages, and Drive history with Ollama default and OpenAI optional.
 
 ## Highlights
 - Read structured birthday events from Google Calendar and validate required metadata.
 - Generate localized greetings through a provider interface (Ollama by default; OpenAI selectable).
 - Prevent repeats by comparing against `greetings_history.json` stored on Google Drive and cached locally.
-- Save Gmail drafts with a `birthday` label for manual review/forwarding on the day.
+- Insert Gmail messages into INBOX as UNREAD with a `birthday` label for manual review/forwarding on the day.
 - Run day-before jobs via APScheduler; optional FastAPI/CLI hooks for manual runs.
 
 ## Quickstart
